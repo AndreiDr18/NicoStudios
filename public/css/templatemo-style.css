@@ -227,7 +227,7 @@ button:focus { outline: none; }
 .tm-social-link:last-child { margin-right: 0; }
 
 .tm-footer {
-	position: absolute;
+	position: relative !important;
 	bottom: 0;
 	left: 0;	
 }
@@ -561,6 +561,11 @@ figure.effect-sadie:hover p {
 .cd-full-width .container-fluid.tm-page-width {
 	padding-left: 10px;
 	padding-right: 10px;
+}
+
+.footer-distance{
+	width: 100% !important;
+	height:15vh;
 }
 
 /* Media Queries */
