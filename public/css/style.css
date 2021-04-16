@@ -1155,7 +1155,13 @@ ol {
 .orderTitle{
 	font-family:sans-serif;
 }
-
+.orderValidPopup{
+	position:absolute;
+	top:5em;
+	right:5em;
+	width:100em;
+	height:50em;
+}
 /* ----------------
   Responsive
 ---------------------*/

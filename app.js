@@ -1,11 +1,17 @@
 const express = require('express');
 const app = express();
 
-
+//Session handler -- Session Environment
+const session = require('express-session')
+app.use(session({
+    secret:'UnsafeSecretRightHere',
+    resave:false,
+    saveUninitialized:true
+}))
 
 //Global utilities
-var multer = require('multer');
-var mongoose = require('mongoose');
+const multer = require('multer');
+const mongoose = require('mongoose');
 //--Globoal utilities--
 
 //MongoDB Environment

@@ -220,6 +220,14 @@
 		</div>
 	</section>
 	<!-- Intro section end  -->
+
+	<!-- Popup Section -->
+
+		<div class="orderValidPopup text-center">
+			<p>You've done some wrong there, mate</p>
+		</div>
+
+	<!-- Popup Section end -->
 	
 	<!-- Footer section   -->
 	<footer class="footer-section">
@@ -267,12 +275,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="js/instafeed.min.js"></script>
 	<script src="js/masonry.pkgd.min.js"></script>
 	<script src="js/main.js"></script>
-	<script>
-		var validEmail = <%= validEmail %>;
-
-		if(!validEmail){
-			alert('Your email is not valid');
-		}
-	</script>
+	<script src="js/index.js"></script>
 	</body>
 </html>
