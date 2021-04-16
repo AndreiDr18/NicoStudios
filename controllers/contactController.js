@@ -1,4 +1,4 @@
-function contactGET(req, res) {
+function contactGET(req, res){
     res.render('contact');
 }
 

@@ -1,5 +1,7 @@
-function indexGET (req, res){
-    res.render('index');
+function indexGET(req, res){
+    res.render('index', {
+        validEmail:req.query.validEmail
+    });
 }
 
-module.exports = indexGET;
+module.exports = {indexGET};
