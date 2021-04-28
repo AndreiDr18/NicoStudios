@@ -15,7 +15,7 @@ const mongoose = require('mongoose');
 //--Globoal utilities--
 
 //MongoDB Environment
-const dbURI = 'mongodb+srv://andreidr:12321@cluster0.z0sa2.mongodb.net/NicoStudios?retryWrites=true&w=majority';
+const dbURI = 'mongodb://andreidr:12321@cluster0-shard-00-00.z0sa2.mongodb.net:27017,cluster0-shard-00-01.z0sa2.mongodb.net:27017,cluster0-shard-00-02.z0sa2.mongodb.net:27017/NicoStudios?ssl=true&replicaSet=atlas-z70060-shard-0&authSource=admin&retryWrites=true&w=majority';
 mongoose.connect(dbURI, {
     useNewUrlParser:true,
     useUnifiedTopology:true
@@ -25,7 +25,7 @@ mongoose.connect(dbURI, {
     app.listen(5050);
 })
 .catch(err =>{
-    console.log(err + ' \n line 13 app.js')
+    console.log(err + ' \n mongodb connect app.js')
 })
 
 //--MongoDB Environment
@@ -35,6 +35,7 @@ const aboutRouter = require('./routes/aboutRoute');
 const blogRouter = require('./routes/blogRoute');
 const contactRouter = require('./routes/contactRoute');
 const orderRouter = require('./routes/orderRoute');
+const adminRouter = require('./routes/adminRoutes/adminRoute');
 //--Routes--
 
 //Environment
@@ -48,11 +49,18 @@ app.use(express.urlencoded({extended:false}));
 
 //Route handling
 
+//CLIENT
+
 app.use('/index', indexRouter);
 app.use('/', indexRouter);
 app.use('/about', aboutRouter);
 app.use('/blog', blogRouter);
 app.use('/contact', contactRouter);
 app.use('/order', orderRouter);
+
+
+//ADMIN
+
+app.use('/admin', adminRouter);
 
 //--Route handling--
