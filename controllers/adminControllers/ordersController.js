@@ -52,5 +52,26 @@ function ordersVIEW(req, res){
   });
 
 }
+function ordersDELETE(req, res){
+  let cookie = new cookies(req, res, {keys:cookieKeys});
+  let adminPass = cookie.get('adminPassword', {signed:true});
+  let username = cookie.get('username', {signed:true});
 
-module.exports = {ordersGET, ordersVIEW};
+  userModel.find({'username':`${username}`})
+  .then(result=>{
+    if(result[0].password == adminPass){
+      orderModel.findByIdAndDelete(req.params.id)
+      .then(order=>{
+        res.redirect('/admin/orders');
+      })
+
+
+    }
+    else{
+        res.redirect('/admin');
+    }
+  });
+
+}
+
+module.exports = {ordersGET, ordersVIEW, ordersDELETE};

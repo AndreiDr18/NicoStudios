@@ -60,6 +60,7 @@
 	<div class="clearfix"></div>
 	<!-- Header section end  -->
 	<div class="container text-center mt-4">
+		<h2 class="mt-4">Orders</h2>
 		<div class="row text-center mt-4">
 			<div class="col-12 mt-4">
 				<table class="table">
@@ -69,7 +70,6 @@
 							<th scope="col">Name</th>
 							<th scope="col">Email</th>
 							<th scope="col">Description</th>
-							<th scope="col">Details</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -78,8 +78,6 @@
 							<td><%= order.name %></td>
 							<td><%= order.email %></td>
 							<td><%= order.shortDescription %></td>
-							<td><%= order.details %></td>
-							<td><a href="/admin/orders/delete/<%=order.id%>">Delete</a></td>
 							<td><a href="/admin/orders/view/<%=order.id%>">View</a></td>
 							<td></td>
 						</tr>

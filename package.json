@@ -4,7 +4,7 @@
   "description": "Thank you for using our template!",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
@@ -19,7 +19,8 @@
     "express-session": "^1.17.1",
     "mongodb": "^3.6.6",
     "mongoose": "^5.11.15",
-    "multer": "^1.4.2"
+    "multer": "^1.4.2",
+    "nodemailer": "^6.6.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"

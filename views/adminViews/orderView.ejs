@@ -40,6 +40,9 @@
 						<h5 class="mb-4">E-Mail:</h5>
 						<h6 class="card-text"><%= order.email %></h6>
 						<hr>
+						<h5 class="mb-4">Phone Number:</h5>
+						<h6 class="card-text"><%= order.phoneNumber %></h6>
+						<hr>
 						<h5 class="mb-4">Short Description:</h5>
 						<h6 class="card-text"><%= order.shortDescription %></h6>
 						<hr>
@@ -48,13 +51,13 @@
 						<hr>
 						<h4 class="text-muted">Reference Picture Below:</h4>
 					</div>
-					<img src="img/orderReferences/<%= order.id %>" alt="Image not found" class="card-img-bottom">
-					<div class="row">
+					<img src="img/orderReferences/<%=order.id%>.jpg" alt="Image not found" class="card-img-bottom">
+					<div class="row mt-4">
 						<div class="col-4">
 							<a href="/admin/orders" class="btn-success">Back</a>
 						</div>
 						<div class="col-4">
-							<a href="/admin/order/complete/<%= order.id%>" class="btn-success">Complete Order</a>
+
 						</div>
 						<div class="col-4">
 							<a href="/admin/orders/delete/<%= order.id %>" class="btn-danger">Delete</a>
