@@ -21,8 +21,8 @@ mongoose.connect(dbURI, {
     useUnifiedTopology:true
 })
 .then(result=>{
+    app.listen(27017);
     console.log('Succesfully connected to MongoDB');
-    app.listen(5050);
 })
 .catch(err =>{
     console.log(err + ' \n mongodb connect app.js')
@@ -40,7 +40,7 @@ const adminRouter = require('./routes/adminRoutes/adminRoute');
 
 //Environment
 app.set('view engine', 'ejs');
-app.use(express.static('./public'));
+app.use(express.static(__dirname + '/public/'));
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));

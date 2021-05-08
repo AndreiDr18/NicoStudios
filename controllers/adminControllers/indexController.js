@@ -1,10 +1,10 @@
-const session = require('express-session');
-const cookies = require('cookies');
 
+const session = require('express-session');
 //hasher
 
 const hasher = require('crypto-js');
 
+const cookies = require('cookies');
 const cookieKeys = ['Crest MapleDoor AveMaria NemtudomRuumano'];
 
 //Mongoose
@@ -52,11 +52,11 @@ function indexPOST(req, res){
             res.redirect('/admin');
         }
         else{
-            console.log('Passwords dont match');
+            console.log(hashedPass);
             res.redirect('/admin');
         }
     })
-    .catch(err=>{   
+    .catch(err=>{
         console.log(err);
     })
 
