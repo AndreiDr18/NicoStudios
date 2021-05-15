@@ -2,11 +2,12 @@
 <html lang="zxx">
 
 <head>
-	<title>Photographer | HTML Template</title>
+	<title>NicoStudios</title>
 	<meta charset="UTF-8">
-	<meta name="description" content="Photographer html template">
-	<meta name="keywords" content="photographer, html">
+	<meta name="description" content="Nico gud peintar">
+	<meta name="keywords" content="Painter, Sketch, Artist">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 	<!-- Favicon -->
 	<link href="/img/favicon.ico" rel="shortcut icon" />
@@ -25,6 +26,7 @@
 
 	<!-- Main Stylesheets -->
 	<link rel="stylesheet" href="/css/style.css" />
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 
 	<!--[if lt IE 9]>
@@ -76,7 +78,7 @@
 			<div class="col-6 h-100 text-center mb-4 pb-4">
 				<h2 class="mt-2 text-light orderTitle">Order a drawing</h2>
 				<div class="form-group orderFormGroup mt-4">
-					<form action="/order" enctype="multipart/form-data" method="POST">
+					<form action="/order" enctype="multipart/form-data" method="POST" id="clientOrderForm">
 						<div class="form-group">
 							<label for="name">Full Name</label>
 							<input type="text" class="form-control" name="name">
@@ -89,7 +91,8 @@
 							<label for="details">Details</label>
 							<textarea name="details" id="details" rows="3" class="form-control"></textarea>
 							<input type="file" class="form-control-file mt-4" name="orderReference">
-							<input type="submit" class="btn-success mt-3">
+							<div class="g-recaptcha mt-4 mb-4" data-sitekey="6LeA7NUaAAAAADqz11zLgxwyh-fqx_rwtWihVvhg"></div>
+							<input type="submit" name="" value="Submit">
 						</div>
 					</form>
 				</div>
