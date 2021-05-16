@@ -51,7 +51,7 @@
 			<li><a href="/admin/upload">Upload</a>
 				<div class="sub-menu text-center">
 					<a href="#blogUpload" data-toggle="modal" data-target="#blogUpload">Blog</a>
-					<a href="#portfolioUpload">Portfolio</a>
+					<a href="#portfolioUpload" data-toggle="modal" data-target="#portfolioUpload">Portfolio</a>
 				</div>
 			</li>
 			<li><a href="/admin/blog">Blog</a></li>
@@ -73,7 +73,7 @@
 				<div class="modal-body">
 
 					<div class="form-group">
-						<form class="text-center" action="/admin/upload/blog" method="post">
+						<form class="text-center" action="/admin/upload/blog" method="post" enctype="multipart/form-data">
 							<label for="title">Title</label>
 							<input type="text" name="title" placeholder="The blog title" class="form-control">
 							<label for="snippet">Snippet</label>
@@ -83,6 +83,28 @@
 							<label for="drawing">Drawing</label>
 							<input type="file" name="drawing" class="form-control mb-4 ">
 							<input type="submit" name="title" value="Submit" class="site-btn">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="portfolioUpload" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-lg">
+
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3>Upload a Drawing to Portfolio</h3>
+				</div>
+				<div class="modal-body">
+
+					<div class="form-group">
+						<form class="text-center" action="/admin/upload/portfolio" method="post" enctype="multipart/form-data">
+							<label for="title">Title</label>
+							<input type="text" name="title" placeholder="The drawing title" class="form-control">
+							<label for="drawing">Drawing</label>
+							<input type="file" name="drawing" class="form-control mb-4 ">
+							<input type="submit" value="Submit" class="site-btn">
 						</form>
 					</div>
 				</div>

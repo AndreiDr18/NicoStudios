@@ -8,7 +8,6 @@ let storage = multer.diskStorage({
         callback(null, './public/img/orderReferences');
     },
     filename: (req, file, callback) => {
-        console.log(req.body.name);
         callback(null, `${req.body.name}` + '.jpg');
     }
 });
