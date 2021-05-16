@@ -1,19 +1,20 @@
-<!DOCTYPE html>
 <html lang="zxx">
 
-<head>
-	<title>Photographer | HTML Template</title>
+<head> <
+	<title>NicoStudios</title>
 	<meta charset="UTF-8">
-	<meta name="description" content="Photographer html template">
-	<meta name="keywords" content="photographer, html">
+	<meta name="description" content="Nico gud peintar">
+	<meta name="keywords" content="Painter, Sketch, Artist">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<!-- Favicon -->
 	<link href="/img/favicon.ico" rel="shortcut icon" />
 
 	<!-- Google font -->
-	<link href="/https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
 
+	<link
+		href="/https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap"
+		rel="stylesheet">
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="/css/font-awesome.min.css" />
@@ -46,53 +47,45 @@
 			<button class="search-btn"><i class="fa fa-search"></i></button>
 		</div>
 		<ul class="main-menu">
-			<li><a href="/admin/dashboard">Dashboard</a></li>
-			<li><a href="/admin/statistics">Visitor activity </a></li>
-			<li><a href="/admin/upload">Upload</a>
-				<div class="sub-menu text-center">
-					<a href="#blogUpload" data-toggle="modal" data-target="#blogUpload">Blog</a>
-					<a href="#portfolioUpload">Portfolio</a>
-				</div>
-			</li>
-			<li><a href="/admin/blog">Blog</a></li>
-			<li><a href="/admin/orders">Orders</a></li>
-			<li><a href="/admin/contacts">Contacts</a></li>
+			<li><a href="/index">Dashboard</a></li>
+			<li><a href="/about">Visitor activity </a></li>
+			<li><a href="/blog">Blog</a></li>
+			<li><a href="/admin/contacts">contacts</a></li>
+			<li><a href="/contact">Contact</a></li>
 			<li class="search-mobile">
 				<button class="search-btn"><i class="fa fa-search"></i></button>
 			</li>
 		</ul>
 	</header>
-
-	<div id="blogUpload" class="modal fade" role="dialog">
-		<div class="modal-dialog modal-lg">
-
-			<div class="modal-content">
-				<div class="modal-header">
-					<h3>Upload a Blog</h3>
-				</div>
-				<div class="modal-body">
-
-					<div class="form-group">
-						<form class="text-center" action="/admin/upload/blog" method="post">
-							<label for="title">Title</label>
-							<input type="text" name="title" placeholder="The blog title" class="form-control">
-							<label for="snippet">Snippet</label>
-							<input type="text" name="snippet" placeholder="Basically a short description" class="form-control">
-							<label for="description">Description</label>
-							<input type="text" name="description" placeholder="Basically a long description" class="form-control">
-							<label for="drawing">Drawing</label>
-							<input type="file" name="drawing" class="form-control mb-4 ">
-							<input type="submit" name="title" value="Submit" class="site-btn">
-						</form>
-					</div>
-				</div>
+	<div class="clearfix"></div>
+	<!-- Header section end  -->
+	<div class="container text-center mt-4">
+		<h2 class="mt-4">contacts</h2>
+		<div class="row text-center mt-4">
+			<div class="col-12 mt-4">
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">Name</th>
+							<th scope="col">Email</th>
+							<th scope="col">Message</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% for(contact of contacts){ %>
+						<tr>
+							<td><%= contact.name %></td>
+							<td><%= contact.email %></td>
+							<td><%= contact.message %></td>
+							<td><a href="/admin/contacts/view/<%=contact.id%>">View</a></td>
+							<td></td>
+						</tr>
+						<% } %>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
-
-	<div class="clearfix"></div>
-	<!-- Header section end  -->
-
 	<!--====== Javascripts & Jquery ======-->
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

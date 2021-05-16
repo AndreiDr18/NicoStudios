@@ -7,5 +7,4 @@ router.get('/',controller.ordersGET);
 router.get('/view/:id', controller.ordersVIEW);
 router.get('/delete/:id', controller.ordersDELETE);
 
-router.use(express.static('../../public'));
 module.exports = router;

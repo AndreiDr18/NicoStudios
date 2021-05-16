@@ -3,6 +3,7 @@ const router = express.Router();
 
 //Routes
 const ordersRouter = require('./ordersRoute');
+const contactsRouter = require('./contactsRoute');
 
 //Controller
 const controller = require('../../controllers/adminControllers/indexController');
@@ -14,5 +15,6 @@ router.post('/', controller.indexPOST);
 //Routing
 
 router.use('/orders', ordersRouter);
+router.use('/contacts', contactsRouter);
 
 module.exports = router;
