@@ -29,6 +29,7 @@ function ordersGET(req, res){
 
 
 }
+
 function ordersVIEW(req, res){
   let cookie = new cookies(req, res, {keys:cookieKeys});
   let adminPass = cookie.get('adminPassword', {signed:true});

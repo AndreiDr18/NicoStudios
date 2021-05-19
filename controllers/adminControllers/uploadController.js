@@ -12,6 +12,9 @@ const drawingModel = require('../../models/portfolio');
 //Filesystem handler
 const fs = require('fs');
 
+//Pathing
+const path = require('path');
+
 async function portfolioPOST(req, res){
   let cookie = new cookies(req, res, {keys:cookieKeys});
   let adminPass = cookie.get('adminPassword', {signed:true});
@@ -24,10 +27,9 @@ async function portfolioPOST(req, res){
       drawingEntry.title=req.body.title;
       drawingEntry.save()
       .then(drawingEntry=>{
-      fs.rename(`./public/img/portfolio/${req.body.title}`, `./public/img/portfolio/${drawingEntry.id}`,()=>{
-        console.log('File renamed');
-      });
-      console.log(drawingEntry);
+        fs.rename(path.normalize(__dirname + `/../../public/img/portfolio/${req.body.title}.jpg`),path.normalize(__dirname + `/../../public/img/portfolio/${drawingEntry._id}.jpg`),()=>{
+      })
+
     })
       res.redirect('/admin');
 

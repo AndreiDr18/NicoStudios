@@ -30,11 +30,16 @@ mongoose.connect(dbURI, {
 
 //--MongoDB Environment
 //Routes
+
+  //client
 const indexRouter = require('./routes/indexRoute');
 const aboutRouter = require('./routes/aboutRoute');
 const blogRouter = require('./routes/blogRoute');
 const contactRouter = require('./routes/contactRoute');
 const orderRouter = require('./routes/orderRoute');
+const portfolioRouter = require('./routes/portfolioRoute');
+
+  //admin
 const adminRouter = require('./routes/adminRoutes/adminRoute');
 //--Routes--
 
@@ -57,6 +62,7 @@ app.use('/about', aboutRouter);
 app.use('/blog', blogRouter);
 app.use('/contact', contactRouter);
 app.use('/order', orderRouter);
+app.use('/portfolio', portfolioRouter);
 
 
 //ADMIN
