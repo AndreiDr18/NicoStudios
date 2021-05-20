@@ -2,17 +2,12 @@
 <html lang="zxx">
 
 <head>
-	<title>Photographer | HTML Template</title>
-	<meta charset="UTF-8">
-	<meta name="description" content="Photographer html template">
-	<meta name="keywords" content="photographer, html">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+	<%- include("./partials/meta.ejs") %>
 	<!-- Favicon -->
 	<link href="/img/favicon.ico" rel="shortcut icon" />
 
 	<!-- Google font -->
-	<link href="/https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
 
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="/css/bootstrap.min.css" />
@@ -40,27 +35,7 @@
 
 	<!-- Header section  -->
 	<header class="header-section">
-		<a href="/index" class="site-logo"><img src="img/logo.png" alt="logo"></a>
-		<div class="header-controls">
-			<button class="nav-switch-btn"><i class="fa fa-bars"></i></button>
-			<button class="search-btn"><i class="fa fa-search"></i></button>
-		</div>
-		<ul class="main-menu">
-			<li><a href="/admin/dashboard">Dashboard</a></li>
-			<li><a href="/admin/statistics">Visitor activity </a></li>
-			<li><a href="/admin/upload">Upload</a>
-				<div class="sub-menu text-center">
-					<a href="#blogUpload" data-toggle="modal" data-target="#blogUpload">Blog</a>
-					<a href="#portfolioUpload" data-toggle="modal" data-target="#portfolioUpload">Portfolio</a>
-				</div>
-			</li>
-			<li><a href="/admin/blog">Blog</a></li>
-			<li><a href="/admin/orders">Orders</a></li>
-			<li><a href="/admin/contacts">Contacts</a></li>
-			<li class="search-mobile">
-				<button class="search-btn"><i class="fa fa-search"></i></button>
-			</li>
-		</ul>
+		<%- include("./partials/navbar.ejs") %>
 	</header>
 
 	<div id="blogUpload" class="modal fade" role="dialog">
@@ -82,7 +57,7 @@
 							<input type="text" name="description" placeholder="Basically a long description" class="form-control">
 							<label for="drawing">Drawing</label>
 							<input type="file" name="drawing" class="form-control mb-4 ">
-							<input type="submit" name="title" value="Submit" class="site-btn">
+							<input type="submit" value="Submit" class="site-btn">
 						</form>
 					</div>
 				</div>

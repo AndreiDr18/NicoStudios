@@ -38,7 +38,7 @@
 	<div class="clearfix"></div>
 	<!-- Header section end  -->
 	<div class="container text-center mt-4">
-		<h2 class="mt-4">drawings</h2>
+		<h2 class="mt-4">blogs</h2>
 		<div class="row text-center mt-4">
 			<div class="col-12 mt-4">
 				<table class="table">
@@ -48,10 +48,10 @@
 						</tr>
 					</thead>
 					<tbody>
-						<% for(drawing of drawings){ %>
+						<% for(blog of blogs){ %>
 						<tr>
-							<td><%= drawing.title %></td>
-							<td><a id="<%=drawing._id%>view" class="btn btn-success">View</a></td>
+							<td><%= blog.title %></td>
+							<td><a id="<%=blog._id%>view" class="btn btn-success">View</a></td>
 							<td></td>
 						</tr>
 						<% } %>
@@ -60,21 +60,35 @@
 			</div>
 		</div>
 	</div>
-	<% for(drawing of drawings){ %>
-	<div id="<%=drawing._id%>" class="modal fade" aria-hidden="true">
-		<div class="modal-dialog">
+	<% for(blog of blogs){ %>
+	<div id="<%=blog._id%>" class="modal fade" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
 
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title"><%=drawing.title%></h5>
+					<h5 class="modal-title">Edit <%=blog.title%></h5>
 				</div>
-				<div class="modal-body">
-					<img src="../img/portfolio/<%=drawing._id%>.jpg" alt="">
+				<div class="modal-body text-center">
+					<form action="/admin/blog/edit/<%=blog._id%>" method="post" enctype="multipart/form-data">
+						<div class="form-group text-center">
+							<label for="title">Title</label>
+							<input class="form-control" type="text" name="title" value="<%=blog.title%>">
+							<hr>
+							<label for="snippet">Snippet</label>
+							<input class="form-control" type="text" name="snippet" value="<%=blog.snippet%>">
+							<hr>
+							<label for="description">Description</label>
+							<input class="form-control" type="text" name="description" value="<%=blog.description%>">
+							<hr>
+							<input class="form-control mb-4" type="file" name="drawing" value="">
+							<input type="submit" value="EDIT" class="site-btn">
+							<a href="/admin/blog/delete/<%=blog._id%>" class="site-btn">Delete</a>
+							<button type="button" class="site-btn" data-dismiss="modal">Close</button>
+						</div>
+					</form>
 				</div>
 				<div class="modal-footer">
-					<a href="/admin/portfolio/delete/<%=drawing._id%>" class="btn btn-danger mr-4">Delete</a>
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
+					<img src="../img/blog/<%=blog._id%>.jpg" alt="">
 				</div>
 			</div>
 		</div>
@@ -92,9 +106,9 @@
 	<script src="js/masonry.pkgd.min.js"></script>
 	<script src="js/main.js"></script>
 	<script type="text/javascript">
-		<% for (drawing of drawings){ %>
-				$('#<%=drawing._id%>view').click(()=>{
-						$('#<%=drawing._id%>').modal("show");
+		<% for (blog of blogs){ %>
+				$('#<%=blog._id%>view').click(()=>{
+						$('#<%=blog._id%>').modal("show");
 				});
 
 		<% } %>

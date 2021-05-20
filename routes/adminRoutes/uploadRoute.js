@@ -2,7 +2,9 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 
-let storage = multer.diskStorage({
+const path = require('path');
+
+let portfolioStorage = multer.diskStorage({
     destination: (req, file, callback) => {
         callback(null, './public/img/portfolio');
     },
@@ -10,8 +12,19 @@ let storage = multer.diskStorage({
         callback(null, `${req.body.title}` + '.jpg');
     }
 });
-let upload = multer({
-    storage: storage
+let portfolioUpload = multer({
+    storage: portfolioStorage
+});
+let blogStorage = multer.diskStorage({
+    destination: (req, file, callback) => {
+        callback(null, path.normalize(__dirname + '/../../public/img/blog'));
+    },
+    filename: (req, file, callback) => {
+        callback(null, `${req.body.title}` + '.jpg');
+    }
+});
+let blogUpload = multer({
+    storage: blogStorage
 });
 
 
@@ -22,6 +35,7 @@ const controller = require('../../controllers/adminControllers/uploadController'
 
 //controller middleware
 //router.get('/blog', controller.blogPOST);
-router.post('/portfolio',upload.single('drawing'), controller.portfolioPOST);
+router.post('/portfolio',portfolioUpload.single('drawing'), controller.portfolioPOST);
+router.post('/blog',blogUpload.single('drawing'), controller.blogPOST);
 
 module.exports = router;

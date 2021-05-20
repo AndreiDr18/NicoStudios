@@ -6,6 +6,7 @@ const ordersRouter = require('./ordersRoute');
 const contactsRouter = require('./contactsRoute');
 const uploadRouter = require('./uploadRoute');
 const portfolioRouter = require('./portfolioRoute');
+const blogRouter = require('./blogRoute');
 
 //Controller
 const controller = require('../../controllers/adminControllers/indexController');
@@ -20,5 +21,6 @@ router.use('/orders', ordersRouter);
 router.use('/contacts', contactsRouter);
 router.use('/upload', uploadRouter);
 router.use('/portfolio', portfolioRouter);
+router.use('/blog', blogRouter);
 
 module.exports = router;
