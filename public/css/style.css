@@ -65,6 +65,12 @@ p {
 img {
 	max-width: 100%;
 }
+.blog-warp.mt-4{
+	margin-top: 5.5rem!important;
+}
+.intro-warp.mb-4{
+	margin-bottom: 5.5rem!important;
+}
 
 input:focus,
 select:focus,
@@ -1162,30 +1168,25 @@ ol {
 	width:100em;
 	height:50em;
 }
-
-/* LeanModal  */
-
-#lean_overlay {
-    position: fixed;
-    z-index:100;
-    top: 0px;
-    left: 0px;
-    height:100%;
-    width:100%;
-    background: #000;
-    display: none;
-}
 /* ----------------
   Responsive
 ---------------------*/
 
 @media (min-width: 1200px) {
+	.indexAbout{
+		height:500px;
+		width:500px;
+	}
 	.container {
 		max-width: 1176px;
 	}
 }
 
 @media (max-width: 1270px) {
+	.indexAbout{
+		height:500px;
+		width:500px;
+	}
 	.site-logo {
 		padding-left: 30px;
 	}
@@ -1194,6 +1195,10 @@ ol {
 /* Medium screen : 992px. */
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
+	.indexAbout{
+		height:400px;
+		width:400px;
+	}
 	.site-logo {
 		padding-left: 15px;
 	}
@@ -1223,6 +1228,10 @@ ol {
 /* Tablet :768px. */
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
+	.indexAbout{
+		height:300px;
+		width:300px;
+	}
 	.header-section {
 		text-align: center;
 		padding-bottom: 0;
@@ -1273,6 +1282,12 @@ ol {
 /* Large Mobile :480px. */
 
 @media only screen and (max-width: 767px) {
+	.indexAbout{
+		height:400px;
+		width:400px;
+		margin-top:8px !important;
+		margin-bottom:10px !important;
+	}
 	.header-section {
 		text-align: center;
 		padding-bottom: 0;
@@ -1362,6 +1377,10 @@ ol {
 /* Small Mobile :320px. */
 
 @media only screen and (max-width: 479px) {
+	.indexAbout{
+		height:0px;
+		width:0px;
+	}
 	.about-bg {
 		height: 400px;
 	}

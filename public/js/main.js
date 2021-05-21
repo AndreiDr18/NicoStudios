@@ -33,7 +33,7 @@ $(window).on('load', function() {
 			},
 			480 : {
 				items: 4,
-				
+
 			},
 			768 : {
 				items: 5,
@@ -137,7 +137,7 @@ $(window).on('load', function() {
 			},
 			480 : {
 				items: 2,
-				
+
 			},
 			768 : {
 				items: 3,
@@ -169,17 +169,6 @@ $(window).on('load', function() {
 	$(window).on('resize',function(){
 		PorfolioItemFix();
 	});
-
-
-	/*------------------
-		Image Popup
-	--------------------*/
-	$('.img-popup').magnificPopup({
-		type: 'image',
-		mainClass: 'img-popup-warp',
-		removalDelay: 500,
-	});
-	
 
 	/*------------------
 		Progress Bar
@@ -255,8 +244,8 @@ $(window).on('load', function() {
 		limit: 15,
         template: '<div class="instaimg"><a href="{{link}}" title="{{caption}}" target="_blank"><img src="{{image}}" alt="{{caption}}" class="img-fluid"/></a></div>',
 	});
-	
+
 	if($('#instafeed').length > 0) {
 		userFeed.run();
-	}	
+	}
 })(jQuery);

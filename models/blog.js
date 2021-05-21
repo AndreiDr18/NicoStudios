@@ -13,7 +13,11 @@ const blogSchema = new Schema({
   description:{
     type:String,
     required:true
+  },
+  time:{
+    type:Date,
+    default:Date.now
   }
-}, {timestamps:true});
+});
 
 module.exports = mongoose.model('blog', blogSchema);

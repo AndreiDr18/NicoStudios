@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 
 <head>
 	<%- include("./partials/meta.ejs") %>
 	<!-- Favicon -->
 	<link href="/img/favicon.ico" rel="shortcut icon" />
 
-	<!-- Google font -->
-	<link href="/https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
-
 	<!-- Stylesheets -->
+	<%-include('./partials/globalCSSLibs.ejs')%>
 	<link rel="stylesheet" href="/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="/css/font-awesome.min.css" />
 	<link rel="stylesheet" href="/css/magnific-popup.css" />
 	<link rel="stylesheet" href="/css/slicknav.min.css" />
 	<link rel="stylesheet" href="/css/owl.carousel.min.css" />
+	<link rel="stylesheet" href="/css/snackbar.css" />
 
 	<!-- Main Stylesheets -->
 	<link rel="stylesheet" href="/css/style.css" />
@@ -28,11 +27,11 @@
 </head>
 
 <body>
-	<!-- Page Preloder -->
+	<!-- Page Preloder
 	<div id="preloder">
 		<div class="loader"></div>
 	</div>
-
+-->
 	<!-- Header section  -->
 	<header class="header-section">
 		<%- include("./partials/navbar.ejs") %>
@@ -41,9 +40,27 @@
 	<!-- Header section end  -->
 
 	<!-- Hero section  -->
-	<div class="hero-section">
+	<div class="hero-section mt-4">
+
+		<!-- For less or equal to 15 drawings -->
+		<%if(drawings.length<=15){%>
 		<div class="hero-slider owl-carousel">
 			<% for(drawing of drawings){%>
+			<div class="hero-item portfolio-item set-bg" data-setbg="img/portfolio/<%=drawing._id%>.jpg">
+				<a href="/portfolio" class="hero-link">
+					<h4><%=drawings.length%></h4>
+				</a>
+			</div>
+			<% }%>
+		</div>
+		<% } %>
+		<!-- For less or equal to 24 drawings -->
+
+		<%if(drawings.length > 15 && drawings.length<=24){%>
+		<%firstHero = drawings.slice(0, drawings.length/2)%>
+		<%secondHero = drawings.slice(drawings.length/2, drawings.length)%>
+		<div class="hero-slider owl-carousel">
+			<% for(drawing of firstHero){%>
 			<div class="hero-item portfolio-item set-bg" data-setbg="img/portfolio/<%=drawing._id%>.jpg">
 				<a href="/portfolio" class="hero-link">
 					<h4>Take a look at my portfolio</h4>
@@ -51,94 +68,127 @@
 			</div>
 			<% }%>
 		</div>
-		<div class="hero-social-links">
-			<a href="/"><i class="fa fa-pinterest"></i></a>
-			<a href="/"><i class="fa fa-facebook"></i></a>
-			<a href="/"><i class="fa fa-twitter"></i></a>
-			<a href="/"><i class="fa fa-dribbble"></i></a>
-			<a href="/"><i class="fa fa-behance"></i></a>
+		<div class="hero-slider owl-carousel">
+			<% for(drawing of secondHero){%>
+			<div class="hero-item portfolio-item set-bg" data-setbg="img/portfolio/<%=drawing._id%>.jpg">
+				<a href="/portfolio" class="hero-link">
+					<h4>Take a look at my portfolio</h4>
+				</a>
+			</div>
+			<% }%>
 		</div>
+		<% } %>
+		<!-- For less or equal to 30 drawings -->
+
+		<%if(drawings.length > 24){%>
+		<%firstHero = drawings.slice(0, drawings.length/3)%>
+		<%secondHero = drawings.slice(drawings.length/2, (2*drawings.length)/3)%>
+		<%thirdHero = drawings.slice((2*drawings.length)/3, 31)%>
+		<div class="hero-slider owl-carousel">
+			<% for(drawing of firstHero){%>
+			<div class="hero-item portfolio-item set-bg" data-setbg="img/portfolio/<%=drawing._id%>.jpg">
+				<a href="/portfolio" class="hero-link">
+					<h4>Take a look at my portfolio</h4>
+				</a>
+			</div>
+			<% }%>
+		</div>
+		<div class="hero-slider owl-carousel">
+			<% for(drawing of secondHero){%>
+			<div class="hero-item portfolio-item set-bg" data-setbg="img/portfolio/<%=drawing._id%>.jpg">
+				<a href="/portfolio" class="hero-link">
+					<h4>Take a look at my portfolio</h4>
+				</a>
+			</div>
+			<% }%>
+		</div>
+		<div class="hero-slider owl-carousel">
+			<% for(drawing of thirdHero){%>
+			<div class="hero-item portfolio-item set-bg" data-setbg="img/portfolio/<%=drawing._id%>.jpg">
+				<a href="/portfolio" class="hero-link">
+					<h4>Take a look at my portfolio</h4>
+				</a>
+			</div>
+			<% }%>
+		</div>
+		<% } %>
+
 	</div>
 	<!-- Hero section end  -->
 
 	<!-- Intro section   -->
 	<section class="intro-section">
-		<div class="intro-warp">
+		<div class="intro-warp mb-4">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-xl-6 col-lg-7 p-0">
-						<div class="intro-text">
-							<h2>My name is Sam. I’m a photographer</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-								ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo
-								viverra maecenas accumsan lacus vel facilisis commodo viverra maecenas. Lorem ipsum
-								dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-								et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra
-								maecenas accumsan lacus vel facilisis.</p>
-							<a href="/#" class="sp-link">Take a look @my portfolio</a>
-						</div>
+					<div class="col-xl-5 col-lg-4 p-0 text-center">
+						<img src="img/indexAbout.jpeg" alt="Your browser doesn't support this image" class="rounded-circle indexAbout img-thumbnail" data-aos="flip-right">
 					</div>
-					<div class="col-xl-6 col-lg-5 p-0">
-						<div class="skill-warp">
-							<div class="single-progress-item">
-								<div class="progress-bar-style" data-progress="30"></div>
-								<p>Years of drawing</p>
-							</div>
-							<div class="single-progress-item">
-								<div class="progress-bar-style" data-progress="100"></div>
-								<p>Passion</p>
-							</div>
-							<div class="single-progress-item">
-								<div class="progress-bar-style" data-progress="90"></div>
-								<p>Portraits</p>
-							</div>
+					<div class="col-xl-7 col-lg-6 p-0" data-aos="fade-down">
+						<div class="intro-text text-center">
+							<h1>Hello there! </h1>
+							<p>My name is Nico and I .... [viata ta personala cat vrei sa dai din ea] . You can always place an order and allow me to bring your ideas to life.. or at least paint them.
+								Actually no.. draw them. Sketch them? All at once? De-aia am nevoie si de tine, Nico, ca habar n-am ce sa scriu aici. Hai pe disc si tuSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+								totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
+								qui ratione voluptatem sequi nesciuntSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+								dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt</p>
+							<a href="/#" class="site-btn">Take a look at my portfolio</a>
 						</div>
 					</div>
 				</div>
+			</div>
+		</div>
+		<hr data-aos="fade-up">
+		<div class="blog-warp mt-4 mb-4">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-3">
+
+					</div>
+					<div class="col-6 text-center">
+							<h2>My Latest Blogs</h2>
+					</div>
+					<div class="col-3">
+
+					</div>
+				</div>
+			</div>
+			<div class="row mt-4">
+				<% blogs = blogs.slice(0, 3); %>
+				<% for(blog of blogs){ %>
+				<div class="col-lg-4 col-sm-6" data-aos="fade-up">
+					<div class="blog-post">
+						<img src="img/blog/<%=blog._id%>.jpg" alt="">
+						<div class="blog-date"><%=blog.time.toLocaleString();%></div>
+						<h3><%=blog.title%></h3>
+						<p><%=blog.snippet%></p>
+						<a href="/blog/<%=blog._id%>" class="site-btn">Read more</a>
+					</div>
+				</div>
+				<% } %>
+			</div>
+			<div class="row text-center">
+				<div class="col-12 text-center">
+						<a href="/blog" class="site-btn">See all blogs</a>
+				</div>
+			</div>
+		</div>
+
+		<hr>
+		<div class="container-fluid">
+			<div class="row">
+
 			</div>
 		</div>
 	</section>
 	<!-- Intro section end  -->
 
 	<!-- Footer section   -->
-	<footer class="footer-section">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-md-6 order-1 order-md-2">
-					<div class="footer-social-links">
-						<a href="/"><i class="fa fa-pinterest"></i></a>
-						<a href="/"><i class="fa fa-facebook"></i></a>
-						<a href="/"><i class="fa fa-twitter"></i></a>
-						<a href="/"><i class="fa fa-dribbble"></i></a>
-						<a href="/"><i class="fa fa-behance"></i></a>
-					</div>
-				</div>
-				<div class="col-md-6 order-2 order-md-1">
-					<div class="copyright">
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						Copyright &copy;<script>
-							document.write(new Date().getFullYear());
-						</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="/https://colorlib.com" target="_blank">Colorlib</a>
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
+<%-include('./partials/footer.ejs')%>
 	<!-- Footer section end  -->
 
-	<!-- Search model -->
-	<div class="search-model">
-		<div class="h-100 d-flex align-items-center justify-content-center">
-			<div class="search-close-switch">+</div>
-			<form class="search-model-form">
-				<input type="text" id="search-input" placeholder="Search here.....">
-			</form>
-		</div>
-	</div>
-	<!-- Search model end -->
-
 	<!--====== Javascripts & Jquery ======-->
+	<%- include('./partials/globalJSLibs.ejs')%>
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.slicknav.min.js"></script>
@@ -148,7 +198,41 @@
 	<script src="js/mixitup.min.js"></script>
 	<script src="js/instafeed.min.js"></script>
 	<script src="js/masonry.pkgd.min.js"></script>
+	<script src="js/snackbar.js"></script>
 	<script src="js/main.js"></script>
+
+	<script type="text/javascript">
+		<%
+		if (orderSuccess === true) {%>
+			Snackbar.show({
+				pos: 'top-right',
+				text: 'Thank you for your order! Expect an email from me soon.'
+			}); <%
+		} else if (orderSuccess === false) {
+			%>
+			Snackbar.show({
+				pos: 'top-right',
+				text: 'Some pieces of information that you provided are invalid',
+				textColor: '#ff4019'
+			}); <%
+		} %>
+		<%
+		if (contactSuccess === true) {
+			%>
+			Snackbar.show({
+				pos: 'top-right',
+				text: "Thank you for contacting me, I'll reach out as soon as I can."
+			}); <%
+		} %>
+		<%
+		if (contactSuccess === false) {
+			%>
+			Snackbar.show({
+				pos: 'top-right',
+				text: "There has been an error while submitting the form or completing it. Please try again later"
+			});
+			 <% } %>
+	</script>
 </body>
 
 </html>

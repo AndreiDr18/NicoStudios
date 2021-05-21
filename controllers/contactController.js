@@ -4,6 +4,9 @@ const contactModel = require('../models/contact.js');
 //Email Validation
 const emailValidator = require('email-validator');
 
+//Session manager
+const session = require('express-session');
+
 //Fetch for backend
 const fetch = require('node-fetch');
 
@@ -39,7 +42,11 @@ async function contactPOST(req, res){
       .catch(err=>{
         console.log(err);
       });
+      session.contactSuccess = true;
 
+    }
+    else{
+      session.contactSuccess = false;
     }
     res.redirect('/');
 }

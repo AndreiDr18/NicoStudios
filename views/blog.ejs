@@ -42,166 +42,24 @@
 	<section class="blog-section">
 		<div class="blog-warp">
 			<div class="row">
+				<% for(blog of blogs){ %>
 				<div class="col-lg-4 col-sm-6">
 					<div class="blog-post">
-						<img src="img/blog/1.jpg" alt="">
-						<div class="blog-date">Feb 11, 2019</div>
-						<h3>10 Tips for a great shot</h3>
-						<div class="blog-cata">
-							<span>Lifestyle</span>
-							<span>Photography</span>
-							<span>Travel</span>
-						</div>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidi-dunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas.</p>
-						<a href="/" class="site-btn">Read more</a>
+						<img src="img/blog/<%=blog._id%>.jpg" alt="">
+						<div class="blog-date"><%=blog.time.toLocaleString();%></div>
+						<h3><%=blog.title%></h3>
+						<p><%=blog.snippet%></p>
+						<a href="/blog/<%=blog._id%>" class="site-btn">Read more</a>
 					</div>
 				</div>
-				<div class="col-lg-4 col-sm-6">
-					<div class="blog-post">
-						<img src="img/blog/2.jpg" alt="">
-						<div class="blog-date">Feb 11, 2019</div>
-						<h3>Photography cousrses 101</h3>
-						<div class="blog-cata">
-							<span>Lifestyle</span>
-							<span>Photography</span>
-							<span>Travel</span>
-						</div>
-						<p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravi-da. Risus commodo viverra maecenas ac-cumsan lacus vel facilisis.</p>
-						<a href="/" class="site-btn">Read more</a>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<div class="blog-post">
-						<img src="img/blog/3.jpg" alt="">
-						<div class="blog-date">Feb 11, 2019</div>
-						<h3>New Lifestyle event</h3>
-						<div class="blog-cata">
-							<span>Lifestyle</span>
-							<span>Photography</span>
-							<span>Travel</span>
-						</div>
-						<p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facili-sis commodo viverra maecenas. </p>
-						<a href="/" class="site-btn">Read more</a>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<div class="blog-post">
-						<img src="img/blog/4.jpg" alt="">
-						<div class="blog-date">Feb 11, 2019</div>
-						<h3>10 Tips for a great shot</h3>
-						<div class="blog-cata">
-							<span>Lifestyle</span>
-							<span>Photography</span>
-							<span>Travel</span>
-						</div>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidi-dunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas.</p>
-						<a href="/" class="site-btn">Read more</a>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<div class="blog-post">
-						<img src="img/blog/5.jpg" alt="">
-						<div class="blog-date">Feb 11, 2019</div>
-						<h3>Photography cousrses 101</h3>
-						<div class="blog-cata">
-							<span>Lifestyle</span>
-							<span>Photography</span>
-							<span>Travel</span>
-						</div>
-						<p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravi-da. Risus commodo viverra maecenas ac-cumsan lacus vel facilisis.</p>
-						<a href="/" class="site-btn">Read more</a>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<div class="blog-post">
-						<img src="img/blog/6.jpg" alt="">
-						<div class="blog-date">Feb 11, 2019</div>
-						<h3>New Lifestyle event</h3>
-						<div class="blog-cata">
-							<span>Lifestyle</span>
-							<span>Photography</span>
-							<span>Travel</span>
-						</div>
-						<p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facili-sis commodo viverra maecenas. </p>
-						<a href="/" class="site-btn">Read more</a>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<div class="blog-post">
-						<img src="img/blog/7.jpg" alt="">
-						<div class="blog-date">Feb 11, 2019</div>
-						<h3>10 Tips for a great shot</h3>
-						<div class="blog-cata">
-							<span>Lifestyle</span>
-							<span>Photography</span>
-							<span>Travel</span>
-						</div>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidi-dunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas.</p>
-						<a href="/" class="site-btn">Read more</a>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<div class="blog-post">
-						<img src="img/blog/8.jpg" alt="">
-						<div class="blog-date">Feb 11, 2019</div>
-						<h3>Photography cousrses 101</h3>
-						<div class="blog-cata">
-							<span>Lifestyle</span>
-							<span>Photography</span>
-							<span>Travel</span>
-						</div>
-						<p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravi-da. Risus commodo viverra maecenas ac-cumsan lacus vel facilisis.</p>
-						<a href="/" class="site-btn">Read more</a>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<div class="blog-post">
-						<img src="img/blog/9.jpg" alt="">
-						<div class="blog-date">Feb 11, 2019</div>
-						<h3>New Lifestyle event</h3>
-						<div class="blog-cata">
-							<span>Lifestyle</span>
-							<span>Photography</span>
-							<span>Travel</span>
-						</div>
-						<p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facili-sis commodo viverra maecenas. </p>
-						<a href="/" class="site-btn">Read more</a>
-					</div>
-				</div>
-			</div>
-			<div class="site-pagination">
-				<a href="/" class="current">01.</a>
-				<a href="/">02.</a>
-				<a href="/">03.</a>
-				<a href="/">04.</a>
-				<a href="/">05.</a>
+				<% } %>
 			</div>
 		</div>
 	</section>
 	<!-- Blog section end  -->
 
 	<!-- Footer section   -->
-	<footer class="footer-section">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-md-6 order-1 order-md-2">
-					<div class="footer-social-links">
-						<a href="/"><i class="fa fa-pinterest"></i></a>
-						<a href="/"><i class="fa fa-facebook"></i></a>
-						<a href="/"><i class="fa fa-twitter"></i></a>
-						<a href="/"><i class="fa fa-dribbble"></i></a>
-						<a href="/"><i class="fa fa-behance"></i></a>
-					</div>
-				</div>
-				<div class="col-md-6 order-2 order-md-1">
-					<div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="/https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-</div>
-				</div>
-			</div>
-		</div>
-	</footer>
+	<%-include('./partials/footer.ejs')%>
 	<!-- Footer section end  -->
 
 	<!-- Search model -->
