@@ -1168,12 +1168,6 @@ ol {
 	width:100em;
 	height:50em;
 }
-.blog-banner-img{
-	object-fit:cover;
-}
-.blog-snippet{
-	background-color:#ebebeb;
-}
 /* ----------------
   Responsive
 ---------------------*/
@@ -1186,10 +1180,6 @@ ol {
 	.container {
 		max-width: 1176px;
 	}
-	.blog-banner{
-		height:30vh !important;
-		overflow-y:hidden;
-	}
 }
 
 @media (max-width: 1270px) {
@@ -1199,10 +1189,6 @@ ol {
 	}
 	.site-logo {
 		padding-left: 30px;
-	}
-	.blog-banner{
-		height:30vh !important;
-		overflow-y:hidden;
 	}
 }
 
@@ -1236,10 +1222,6 @@ ol {
 	}
 	.blog-post img {
 		padding: 0;
-	}
-	.blog-banner{
-		height:27vh !important;
-		overflow-y:hidden;
 	}
 }
 
@@ -1294,10 +1276,6 @@ ol {
 	}
 	.contact-text {
 		margin-bottom: 50px;
-	}
-	.blog-banner{
-		height:25vh !important;
-		overflow-y:hidden;
 	}
 }
 
@@ -1394,10 +1372,6 @@ ol {
 	.search-model-form input {
 		width: 100%;
 	}
-	.blog-banner{
-		height:30vh !important;
-		overflow-y:hidden;
-	}
 }
 
 /* Small Mobile :320px. */
@@ -1446,7 +1420,9 @@ ol {
 		height: 400px;
 	}
 	.blog-banner{
-		height:15vh !important;
+		height:100px !important;
+	}
+	.blog-banner-img{
 		overflow-y:hidden;
 	}
 }

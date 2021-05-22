@@ -69,7 +69,7 @@
 					<h5 class="modal-title">Edit <%=blog.title%></h5>
 				</div>
 				<div class="modal-body text-center">
-					<form action="/admin/blog/edit/<%=blog._id%>" method="post" enctype="multipart/form-data">
+					<form action="/admin/blog/edit/<%=blog._id%>" method="post" enctype="multipart/form-data" id="<%=blog._id%>">
 						<div class="form-group text-center">
 							<label for="title">Title</label>
 							<input class="form-control" type="text" name="title" value="<%=blog.title%>">
@@ -77,8 +77,8 @@
 							<label for="snippet">Snippet</label>
 							<input class="form-control" type="text" name="snippet" value="<%=blog.snippet%>">
 							<hr>
-							<label for="description">Description</label>
-							<input class="form-control" type="text" name="description" value="<%=blog.description%>">
+							<label for="description">Text</label>
+							<textarea name="description" class="form-control" rows="15"><%=blog.description%></textarea>
 							<hr>
 							<input class="form-control mb-4" type="file" name="drawing" value="">
 							<input type="submit" value="EDIT" class="site-btn">

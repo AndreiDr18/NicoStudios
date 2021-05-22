@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+	<%- include("./partials/meta.ejs") %>
+	<!-- Favicon -->
+	<link href="/img/favicon.ico" rel="shortcut icon"/>
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="/css/font-awesome.min.css"/>
+	<link rel="stylesheet" href="/css/magnific-popup.css"/>
+	<link rel="stylesheet" href="/css/slicknav.min.css"/>
+	<link rel="stylesheet" href="/css/owl.carousel.min.css"/>
+
+	<!-- Main Stylesheets -->
+	<link rel="stylesheet" href="/css/style.css"/>
+
+
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+</head>
+<body>
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+
+	<!-- Header section  -->
+	<header class="header-section hs-bd">
+		<%- include("./partials/navbar.ejs") %>
+	</header>
+	<div class="clearfix"></div>
+	<!-- Header section end  -->
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-1">
+
+      </div>
+      <div class="col-10 text-center blog-banner">
+        <img src="/../img/blog/<%=blog._id%>.jpg" class="blog-banner-img" alt="">
+      </div>
+      <div class="col-1">
+
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-2">
+
+      </div>
+      <div class="col-8 text-center">
+        <h1><%=blog.title%></h1>
+      </div>
+      <div class="col-2">
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2">
+
+      </div>
+      <div class="col-8 text-center">
+        <h5 class="text-muted"><%=blog.time.toLocaleString()%></h5>
+      </div>
+      <div class="col-2">
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+
+      </div>
+      <div class="col-6 text-center blog-snippet">
+        <h5 class="text-muted"><%=blog.snippet%></h5>
+      </div>
+      <div class="col-3">
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+
+      </div>
+      <div class="col-6">
+        <h5 class="blog-desc"></h5>
+      </div>
+      <div class="col-3">
+
+      </div>
+    </div>
+  </div>
+	<!-- Footer section   -->
+	<%-include('./partials/footer.ejs')%>
+	<!-- Footer section end  -->
+
+	<!--====== Javascripts & Jquery ======-->
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.slicknav.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/circle-progress.min.js"></script>
+	<script src="js/mixitup.min.js"></script>
+	<script src="js/instafeed.min.js"></script>
+	<script src="js/masonry.pkgd.min.js"></script>
+	<script src="js/main.js"></script>
+	<script type="text/javascript">
+		$('.blog-desc').innerHTML = 'Lalallalaa;' /*$.parseHTML('<%-blog.description%>');*/
+	</script>
+
+	</body>
+</html>

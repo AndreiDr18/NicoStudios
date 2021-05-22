@@ -7,5 +7,12 @@ async function blogGET(req, res){
       blogs:blogs
     });
 }
+async function blogVIEW(req, res){
 
-module.exports = {blogGET};
+    let blog = await blogModel.findById(`${req.params.id}`);
+    res.render('blogView',{
+      blog:blog
+    });
+}
+
+module.exports = {blogGET, blogVIEW};
