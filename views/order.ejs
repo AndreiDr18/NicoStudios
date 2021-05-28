@@ -7,11 +7,6 @@
 	<!-- Favicon -->
 	<link href="/img/favicon.ico" rel="shortcut icon" />
 
-	<!-- Google font -->
-	<link
-		href="/https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap"
-		rel="stylesheet">
-
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="/css/font-awesome.min.css" />
@@ -45,33 +40,80 @@
 
 	<div class="container">
 		<div class="row mt-4 pt-4">
-			<div class="col-3">
+			<div class="col-2 text-center">
 
 			</div>
-			<div class="col-6 h-100 text-center mb-4 pb-4">
-				<h2 class="mt-2 text-light orderTitle">Order a drawing</h2>
-				<div class="form-group orderFormGroup mt-4">
+			<div class="col-8 h-100 mb-4 pb-4">
+				<ol style="list-style-type:disc !important">
+					<li>After succesfully completing the form you have to pay through my IBAN the price listed at the bottom</li>
+					<li>IBAN: RO74BTRLRONCRT0465337201</li>
+					<li>After succesfully completing the payment, you'll be contacted through email for order completion</li>
+				</ol>
+				<div class="form-group orderFormGroup mt-4 text-center">
 					<form action="/order" enctype="multipart/form-data" method="POST" id="clientOrderForm">
 						<div class="form-group">
-							<label for="name">Full Name</label>
-							<input type="text" class="form-control" name="name">
-							<label for="email">Email</label>
-							<input type="text" class="form-control" name="email">
-							<label for="phoneNumber">Phone Number</label>
-							<input type="text" class="form-control" name="phoneNumber">
-							<label for="shortDescription">Short Description</label>
-							<input type="text" class="form-control" name="shortDescription">
-							<label for="details">Details</label>
-							<textarea name="details" id="details" rows="3" class="form-control"></textarea>
-							<input type="file" class="form-control-file mt-4" name="orderReference">
+
+							<div class="order-classif">
+								<div class="order-classif-individual">
+
+									<h3>Personal Information</h3>
+									<hr>
+									<label for="name">Full Name</label>
+									<input type="text" class="form-control" name="name">
+									<div class="row mt-2">
+										<div class="col-lg-6 col-xl-6 col-sm-12">
+											<label for="email">Email</label>
+											<input type="email" class="form-control" name="email">
+										</div>
+										<div class="col-lg-6 col-xl-6 col-sm-12">
+											<label for="phoneNumber">Phone Number</label>
+											<input type="tel" class="form-control" name="phoneNumber">
+										</div>
+									</div>
+
+									<label for="address">Address</label>
+									<input type="text" class="form-control" name="address">
+								</div>
+							</div>
+							<div class="order-classif mt-4">
+
+									<div class="order-classif-individual">
+
+
+										<h3>Order Information</h3>
+										<hr>
+										<label for="shortDescription">Short Description</label>
+										<input type="text" class="form-control" name="shortDescription">
+										<label for="details">Details</label>
+										<textarea name="details" id="details" rows="3" class="form-control"></textarea>
+										<div class="row mb-4">
+											<div class="col-6">
+												<select class="form-control mt-2" name="paper" id="paperSelect" onchange="calculatePrice1()">
+													<option value="a4">A4</option>
+													<option value="a3">A3</option>
+													<option value="a2">A2</option>
+												</select>
+											</div>
+											<div class="col-6">
+												<select class="form-control mt-2" name="style" id="styleSelect" onchange="calculatePrice1()">
+													<option value="sketch">Sketch</option>
+													<option value="drawing">Drawing</option>
+													<option value="painting">Painting</option>
+												</select>
+											</div>
+									</div>
+									<label for="orderReference mt-4">Picture of reference</label>
+									<input type="file" class="form-control-file" name="orderReference">
+								</div>
+							</div>
+
+
+							<p>Price: <span id="priceIndicator">0</span> LEI (Transportation fee included <b>15 LEI</b>)</p>
 							<div class="g-recaptcha mt-4 mb-4" data-sitekey="6LeA7NUaAAAAADqz11zLgxwyh-fqx_rwtWihVvhg"></div>
 							<input class="site-btn" type="submit" name="" value="Submit">
 						</div>
 					</form>
 				</div>
-			</div>
-			<div class="col-3">
-
 			</div>
 
 		</div>
@@ -80,17 +122,6 @@
 	<!-- Footer section   -->
 <%-include('./partials/footer.ejs')%>
 	<!-- Footer section end  -->
-
-	<!-- Search model -->
-	<div class="search-model">
-		<div class="h-100 d-flex align-items-center justify-content-center">
-			<div class="search-close-switch">+</div>
-			<form class="search-model-form">
-				<input type="text" id="search-input" placeholder="Search here.....">
-			</form>
-		</div>
-	</div>
-	<!-- Search model end -->
 
 	<!--====== Javascripts & Jquery ======-->
 	<script src="js/jquery-3.2.1.min.js"></script>
@@ -103,6 +134,24 @@
 	<script src="js/instafeed.min.js"></script>
 	<script src="js/masonry.pkgd.min.js"></script>
 	<script src="js/main.js"></script>
+	<script type="text/javascript">
+
+			function calculatePrice1(){
+
+
+				let style = document.getElementById('styleSelect').value.toLowerCase();
+				let paper = document.getElementById('paperSelect').value.toLowerCase();
+				let priceIndicator = document.getElementById('priceIndicator');
+				let priceCatalogString = '<%-JSON.stringify(catalog)%>';
+				let priceCatalog = JSON.parse(priceCatalogString);
+
+
+				priceIndicator.innerHTML = priceCatalog.style[`${style}`] + priceCatalog.paper[`${paper}`] + 15;
+
+			}
+			calculatePrice1();
+
+	</script>
 
 </body>
 

@@ -69,4 +69,10 @@ app.use('/portfolio', portfolioRouter);
 
 app.use('/admin', adminRouter);
 
+//ERRORS
+
+app.use((req, res,next)=>{
+   res.status(404).render('404');
+});
+
 //--Route handling--

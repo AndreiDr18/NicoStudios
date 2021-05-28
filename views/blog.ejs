@@ -45,11 +45,15 @@
 				<% for(blog of blogs){ %>
 				<div class="col-lg-4 col-sm-6">
 					<div class="blog-post">
-						<img src="img/blog/<%=blog._id%>.jpg" alt="">
+						<img src="/../img/blog/<%=blog._id%>.jpg" alt="">
 						<div class="blog-date"><%=blog.time.toLocaleString();%></div>
 						<h3><%=blog.title%></h3>
 						<p><%=blog.snippet%></p>
-						<a href="/blog/<%=blog._id%>" class="site-btn">Read more</a>
+
+						<%	let unformattedTitle = blog.title;
+								let formattedTitle = unformattedTitle.replace(/ /g,"-");
+								%>
+						<a href="/blog/<%=formattedTitle%>" class="site-btn">Read more</a>
 					</div>
 				</div>
 				<% } %>

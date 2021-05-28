@@ -13,24 +13,23 @@ const user = require('../../models/user');
 
 function indexGET(req, res){
     let cookie = new cookies(req, res, {keys:cookieKeys});
-    let adminPass = cookie.get('adminPassword', {signed:true});
-    let username = cookie.get('username', {signed:true});
+    let AID = cookie.get('AID', {signed:true});
 
 
-    if(!adminPass)
+    if(!AID)
     {
         res.render('adminViews/login')
     }
     else{
-        user.find({username:`${username}`})
+        user.findById(`${AID}`)
         .then(result=>{
-            if(result[0].password == adminPass){
+          if(result != null){
                 res.render('adminViews/index');
                 console.log('User entry granted');
-            }
-            else{
-                res.redirect('/');
-            }
+                }
+                else{
+                  res.redirect('/');
+                }
         })
         .catch(err =>{
             console.log(err);
@@ -40,19 +39,15 @@ function indexGET(req, res){
 function indexPOST(req, res){
     let cookie = new cookies(req, res, {keys:cookieKeys});
     let hashedPass = hasher.SHA3(req.body.password);
-    console.log(hashedPass);
     user.find({username:req.body.username})
     .then(result =>{
-        console.log('User find resulted in smth');
-        console.log('Hashed pass = ' + `${hashedPass}`);
-        if(result[0].password == hashedPass){
-            cookie.set('adminPassword', hashedPass, {signed:true});
-            cookie.set('username', req.body.username, {signed:true});
-            console.log('User cookies registered')
+        if(result.password == hashedPass){
+            console.log(result['_id'] + '\n 1');
+            cookie.set('AID', result._id, {signed:true});
             res.redirect('/admin');
         }
         else{
-            console.log(hashedPass);
+          console.log(result.password + '\n 2');
             res.redirect('/admin');
         }
     })

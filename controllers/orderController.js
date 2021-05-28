@@ -56,8 +56,15 @@ async function recaptchaCheck(token, res) {
 
 }
 
-function orderGET(req, res) {
-  res.render('order');
+async function orderGET(req, res) {
+  //Price Catalog
+  let catalogRaw = fs.readFileSync(path.normalize(__dirname + '/../priceCatalog.json'));
+  let catalog = await JSON.parse(catalogRaw);
+
+
+  res.render('order',{
+    catalog:catalog
+  });
 }
 
 async function orderPOST(req, res) {
@@ -73,9 +80,11 @@ async function orderPOST(req, res) {
 
   //Check for troll requests
 
-  if ((emailValidator.validate(req.body.email)) /* &&  (!(alreadyOrdered)) */ && (humanValidate["success"])) {
-    console.log(alreadyOrdered + '\n');
+  if ((emailValidator.validate(req.body.email)) /* &&  (!(alreadyOrdered))  && (humanValidate["success"])*/) {
     cookie.set('alreadyOrdered', true);
+
+    let catalogRaw = fs.readFileSync(path.normalize(__dirname + '/../priceCatalog.json'));
+    let catalog = await JSON.parse(catalogRaw);
 
     let order = new orderModel;
     order.name = `${req.body.name}`;
@@ -83,6 +92,11 @@ async function orderPOST(req, res) {
     order.phoneNumber = `${req.body.phoneNumber}`;
     order.shortDescription = `${req.body.shortDescription}`;
     order.details = `${req.body.details}`;
+    order.address = `${req.body.address}`;
+    order.style = `${req.body.style}`;
+    order.paper = `${req.body.paper}`;
+    order.price = catalog.style[`${req.body.style}`] + catalog.paper[`${req.body.paper}`] + 10;
+
     order.save()
       .then(res => {
         fs.rename(
@@ -100,7 +114,6 @@ async function orderPOST(req, res) {
   res.redirect('/');
 } else {
   session.orderSuccess = false;
-  console.log(alreadyOrdered + '\n');
   res.redirect('/');
 }
 

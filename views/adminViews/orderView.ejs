@@ -44,18 +44,33 @@
 						<h5 class="mb-4">Detailed Description:</h5>
 						<h6 class="card-text"><%= order.details %></h6>
 						<hr>
+						<h5 class="mb-4">Address:</h5>
+						<h6 class="card-text"><%= order.address %></h6>
+						<hr>
+						<div class="row">
+							<div class="col-3">
+								<h5 class="card-text text-muted"><%=order.style.toUpperCase();%></h5>
+							</div>
+							<div class="col-6 text-center">
+								<h5 class="card-text" style="color:#ff006a">PRICE: <%=order.price%> LEI</h5>
+							</div>
+							<div class="col-3">
+								<h5 class="card-text text-muted"><%=order.paper.toUpperCase();%></h5>
+							</div>
+						</div>
+						<hr>
 						<h4 class="text-muted">Reference Picture Below:</h4>
 					</div>
 					<img src="img/orderReferences/<%=order.id%>.jpg" alt="Image not found" class="card-img-bottom">
 					<div class="row mt-4">
 						<div class="col-4">
-							<a href="/admin/orders" class="btn-success">Back</a>
+							<a href="/admin/orders" class="btn btn-success">Back</a>
 						</div>
 						<div class="col-4">
 
 						</div>
 						<div class="col-4">
-							<a href="/admin/orders/delete/<%= order.id %>" class="btn-danger">Delete</a>
+							<a href="/admin/orders/delete/<%= order.id %>" class="btn btn-danger">Delete</a>
 						</div>
 					</div>
 				</div>

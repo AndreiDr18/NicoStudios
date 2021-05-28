@@ -1,0 +1,13 @@
+{
+  "style":{
+    "sketch":12,
+    "drawing":15,
+    "painting":20
+  },
+  "paper":{
+    "a4":6,
+    "a3":20,
+    "a2":50
+
+  }
+}

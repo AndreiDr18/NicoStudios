@@ -15,6 +15,9 @@ const order = new Schema({
     type: String,
     required: true
   },
+  address:{
+    type:String
+  },
   shortDescription: {
     type: String,
     required: true
@@ -22,6 +25,18 @@ const order = new Schema({
   details: {
     type: String,
     required: true
+  },
+  style:{
+    type:String,
+    required:true
+  },
+  paper:{
+    type:String,
+    required:true
+  },
+  price:{
+    type:Number,
+    required:true
   }
 
 }, {

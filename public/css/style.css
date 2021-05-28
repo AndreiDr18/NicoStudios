@@ -1075,7 +1075,19 @@ ol {
 	background: #212121;
 	padding: 11px 13px;
 }
-
+/* ----------------
+  Order page
+---------------------*/
+.order-classif{
+	border-radius:5px !important;
+	border-style:solid !important;
+	border-width: 1px;
+	border-color: #e6e7e8;
+	border-spacing: 20px;
+}
+.order-classif-individual{
+	margin:10px;
+}
 /* ----------------
   Contact page
 ---------------------*/
@@ -1169,10 +1181,9 @@ ol {
 	height:50em;
 }
 .blog-banner-img{
-	object-fit:cover;
 }
 .blog-snippet{
-	background-color:#ebebeb;
+
 }
 /* ----------------
   Responsive
@@ -1188,6 +1199,7 @@ ol {
 	}
 	.blog-banner{
 		height:30vh !important;
+		width:60vw !important;
 		overflow-y:hidden;
 	}
 }
@@ -1202,6 +1214,7 @@ ol {
 	}
 	.blog-banner{
 		height:30vh !important;
+		width:60vw !important;
 		overflow-y:hidden;
 	}
 }
@@ -1239,6 +1252,7 @@ ol {
 	}
 	.blog-banner{
 		height:27vh !important;
+		width:60vw !important;
 		overflow-y:hidden;
 	}
 }

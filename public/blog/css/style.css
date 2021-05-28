@@ -1161,12 +1161,9 @@ ol {
 .orderTitle{
 	font-family:sans-serif;
 }
-.orderValidPopup{
-	position:absolute;
-	top:5em;
-	right:5em;
-	width:100em;
-	height:50em;
+.blog-container{
+	border-style:solid;
+	border: 1px 1px;
 }
 /* ----------------
   Responsive

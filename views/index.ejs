@@ -132,7 +132,7 @@
 								totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
 								qui ratione voluptatem sequi nesciuntSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
 								dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt</p>
-							<a href="/#" class="site-btn">Take a look at my portfolio</a>
+							<a href="/portfolio" class="site-btn">Take a look at my portfolio</a>
 						</div>
 					</div>
 				</div>
@@ -162,7 +162,10 @@
 						<div class="blog-date"><%=blog.time.toLocaleString();%></div>
 						<h3><%=blog.title%></h3>
 						<p><%=blog.snippet%></p>
-						<a href="/blog/<%=blog._id%>" class="site-btn">Read more</a>
+						<%	let unformattedTitle = blog.title;
+						 		let formattedTitle = unformattedTitle.replace(/ /g,"-");
+								%>
+						<a href="/blog/<%=formattedTitle%>" class="site-btn">Read more</a>
 					</div>
 				</div>
 				<% } %>
@@ -170,6 +173,32 @@
 			<div class="row text-center">
 				<div class="col-12 text-center">
 						<a href="/blog" class="site-btn">See all blogs</a>
+				</div>
+			</div>
+			<hr>
+			<div class="row mt-4">
+				<div class="col-xl-12 col-lg-12 p-0" data-aos="fade-up">
+					<div class="intro-text text-center">
+						<h1 class="mt-4">You can always get your own! </h1>
+						<div class="row mt-4">
+							<div class="col-6 mt-2">
+								<p>I have a neat way in which you can <a class="btn btn-success" href="/order">order</a> your own drawing. You can describe it to me, send me a reference picture, and i'll do my best to meet your expectations.
+								<br>
+								Your name and adress are necessary since i'll be sending you the drawing to your place. The other options, well.. i'll let you see for yourself</p>
+							</div>
+							<div class="col-6 mt-2">
+								<p>If you have questions, propositions etc, you're more than welcome to send me a message through my <a class="btn btn-info" href="/contact">contact form</a> to which i'll try to email back as quickly as possible</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-6">
+								<a href="/order" class="site-btn">ORDER NOW</a>
+							</div>
+							<div class="col-6">
+								<a href="/contact" class="site-btn">CONTACT ME</a>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
