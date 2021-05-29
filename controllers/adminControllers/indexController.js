@@ -36,24 +36,20 @@ function indexGET(req, res){
         })
     }
 }
-function indexPOST(req, res){
+async function indexPOST(req, res){
     let cookie = new cookies(req, res, {keys:cookieKeys});
     let hashedPass = hasher.SHA3(req.body.password);
-    user.find({username:req.body.username})
-    .then(result =>{
-        if(result.password == hashedPass){
-            console.log(result['_id'] + '\n 1');
-            cookie.set('AID', result._id, {signed:true});
-            res.redirect('/admin');
-        }
-        else{
-          console.log(result.password + '\n 2');
-            res.redirect('/admin');
-        }
-    })
-    .catch(err=>{
-        console.log(err);
-    })
+
+    let admin = await user.findOne({"username":`${req.body.username}`});
+
+    //Login verification
+    if(admin.password == hashedPass){
+      cookie.set('AID', `${admin._id}`, {signed:true});
+      res.redirect('/admin');
+    }
+    else{
+      res.redirect('/admin');
+    }
 
 
 }

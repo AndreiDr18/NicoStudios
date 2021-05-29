@@ -3,75 +3,102 @@ const cookieKeys = ['Crest MapleDoor AveMaria NemtudomRuumano'];
 
 const hasher = require('crypto-js');
 
-const userModel = require('../../models/user');
+const user = require('../../models/user');
 const orderModel = require('../../models/order');
 
 function ordersGET(req, res){
   let cookie = new cookies(req, res, {keys:cookieKeys});
-  let adminPass = cookie.get('adminPassword', {signed:true});
-  let username = cookie.get('username', {signed:true});
+  let AID = cookie.get('AID', {signed:true});
 
-  userModel.find({'username':`${username}`})
-  .then(result=>{
-    if(result[0].password == adminPass){
-        orderModel.find()
-        .then(orders=>{
-        res.render('adminViews/orders',{
-          orders:orders
-        });
-        })
 
-    }
-    else{
-        res.redirect('/admin');
-    }
-  });
+  if(!AID)
+  {
+      res.render('adminViews/login')
+  }
+  else{
+      user.findById(`${AID}`)
+      .then(result=>{
+        if(result != null){
+          orderModel.find()
+          .then(orders=>{
+          res.render('adminViews/orders',{
+            orders:orders
+          });
+          })
 
+              }
+              else{
+                res.redirect('/');
+              }
+      })
+      .catch(err =>{
+          console.log(err);
+      })
+  }
 
 }
 
 function ordersVIEW(req, res){
   let cookie = new cookies(req, res, {keys:cookieKeys});
-  let adminPass = cookie.get('adminPassword', {signed:true});
-  let username = cookie.get('username', {signed:true});
+  let AID = cookie.get('AID', {signed:true});
 
-  userModel.find({'username':`${username}`})
-  .then(result=>{
-    if(result[0].password == adminPass){
-      orderModel.findById(req.params.id)
-      .then(order=>{
-        res.render('adminViews/orderView',{
-          'order':order
-        });
+
+  if(!AID)
+  {
+      res.render('adminViews/login')
+  }
+  else{
+      user.findById(`${AID}`)
+      .then(result=>{
+        if(result != null){
+          orderModel.findById(req.params.id)
+          .then(order=>{
+            res.render('adminViews/orderView',{
+              'order':order
+            });
+          })
+
+
+              }
+              else{
+                res.redirect('/');
+              }
       })
-
-
-    }
-    else{
-        res.redirect('/admin');
-    }
-  });
+      .catch(err =>{
+          console.log(err);
+      })
+  }
 
 }
 function ordersDELETE(req, res){
   let cookie = new cookies(req, res, {keys:cookieKeys});
-  let adminPass = cookie.get('adminPassword', {signed:true});
-  let username = cookie.get('username', {signed:true});
+  let AID = cookie.get('AID', {signed:true});
 
-  userModel.find({'username':`${username}`})
-  .then(result=>{
-    if(result[0].password == adminPass){
-      orderModel.findByIdAndDelete(req.params.id)
-      .then(order=>{
-        res.redirect('/admin/orders');
+
+  if(!AID)
+  {
+      res.render('adminViews/login')
+  }
+  else{
+      user.findById(`${AID}`)
+      .then(result=>{
+        if(result != null){
+          orderModel.findByIdAndDelete(req.params.id)
+          .then(order=>{
+            res.redirect('/admin/orders');
+          })
+
+
+              }
+              else{
+                res.redirect('/');
+              }
       })
+      .catch(err =>{
+          console.log(err);
+      })
+  }
 
-
-    }
-    else{
-        res.redirect('/admin');
-    }
-  });
 
 }
 

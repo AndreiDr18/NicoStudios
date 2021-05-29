@@ -3,7 +3,7 @@ const cookieKeys = ['Crest MapleDoor AveMaria NemtudomRuumano'];
 
 const hasher = require('crypto-js');
 
-const userModel = require('../../models/user');
+const user = require('../../models/user');
 const portfolioModel = require('../../models/portfolio');
 
 const fs = require('fs');
@@ -12,46 +12,65 @@ const path = require('path');
 
 async function indexDELETE(req, res){
   let cookie = new cookies(req, res, {keys:cookieKeys});
-  let adminPass = cookie.get('adminPassword', {signed:true});
-  let username = cookie.get('username', {signed:true});
+  let AID = cookie.get('AID', {signed:true});
 
-  userModel.find({'username':`${username}`})
-  .then(result=>{
-    if(result[0].password == adminPass){
-      portfolioModel.findByIdAndDelete(`${req.params.id}`)
+
+  if(!AID)
+  {
+      res.render('adminViews/login')
+  }
+  else{
+      user.findById(`${AID}`)
       .then(result=>{
-        fs.unlinkSync(path.normalize(__dirname + `/../../public/img/portfolio/${req.params.id}.jpg`));
-      });
-      res.redirect('/admin/portfolio');
+        if(result != null){
+          portfolioModel.findByIdAndDelete(`${req.params.id}`)
+          .then(result=>{
+            fs.unlinkSync(path.normalize(__dirname + `/../../public/img/portfolio/${req.params.id}.jpg`));
+          });
+          res.redirect('/admin/portfolio');
 
-    }
-    else{
-        res.redirect('/admin');
-    }
-  });
+              }
+              else{
+                res.redirect('/');
+              }
+      })
+      .catch(err =>{
+          console.log(err);
+      })
+  }
 
 }
 
 async function indexGET(req, res){
   let cookie = new cookies(req, res, {keys:cookieKeys});
-  let adminPass = cookie.get('adminPassword', {signed:true});
-  let username = cookie.get('username', {signed:true});
+  let AID = cookie.get('AID', {signed:true});
 
-  userModel.find({'username':`${username}`})
-  .then(result=>{
-    if(result[0].password == adminPass){
-      portfolioModel.find()
-      .then(drawings=>{
-        res.render('adminViews/portfolio',{
-          drawings:drawings
-        });
-      });
 
-    }
-    else{
-        res.redirect('/admin');
-    }
-  });
+  if(!AID)
+  {
+      res.render('adminViews/login')
+  }
+  else{
+      user.findById(`${AID}`)
+      .then(result=>{
+        if(result != null){
+          portfolioModel.find()
+          .then(drawings=>{
+            res.render('adminViews/portfolio',{
+              drawings:drawings
+            });
+          });
+
+              }
+              else{
+                res.redirect('/');
+              }
+      })
+      .catch(err =>{
+          console.log(err);
+      })
+  }
+
 }
 
 module.exports = {indexDELETE, indexGET};
