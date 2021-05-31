@@ -1,6 +1,17 @@
 const express = require('express');
 const app = express();
 
+//Sitemap Generator
+
+const {SitemapStream, streamToPromise} = require('sitemap');
+const {createGzip} = require('zlib');
+const {Readable} = require('stream');
+
+let sitemap;
+
+//Path handler
+const path = require('path');
+
 //Session handler -- Session Environment
 const session = require('express-session')
 app.use(session({
@@ -28,6 +39,8 @@ mongoose.connect(dbURI, {
     console.log(err + ' \n mongodb connect app.js')
 })
 
+
+const blogModel = require(path.normalize(__dirname + '/models/blog'));
 //--MongoDB Environment
 //Routes
 
@@ -69,6 +82,48 @@ app.use('/portfolio', portfolioRouter);
 
 app.use('/admin', adminRouter);
 
+app.use('/sitemap.xml',async function (req, res){
+
+    res.header('Content-Type', 'application/xml');
+    res.header('Content-Encoding', 'gzip');
+
+    if(sitemap){
+      res.send(sitemap);
+      return;
+    }
+
+    try{
+      const smStream = new SitemapStream({
+        hostname:'https://dragneaandrei.xyz' //to change hostname
+      })
+      const pipeline = smStream.pipe(createGzip());
+
+      const blogs = await blogModel.find();
+
+      for(blog of blogs){
+        let title = blog.title.replace(/ /g, '-');
+        smStream.write({url:`/blog/${title}`});
+      }
+      smStream.write({url:'/contact'});
+      smStream.write({url:'/order'});
+      smStream.write({url:'/portfolio'});
+      smStream.write({url:'/about'});
+      streamToPromise(pipeline).then(sm=> sitemap = sm);
+      smStream.end()
+
+      pipeline.pipe(res).on('error', (e) => {throw e})
+    }catch(e){
+      console.error(e);
+      res.status(500).end();
+    }
+
+});
+/*
+app.use('/robots.txt', (req, res)=>{
+  res.set('Content-Type', 'text/plain');
+  res.send(path.normalize(__dirname + '/robots.txt'));
+});
+*/
 //ERRORS
 
 app.use((req, res,next)=>{
@@ -76,3 +131,8 @@ app.use((req, res,next)=>{
 });
 
 //--Route handling--
+setInterval(resetSitemap, 3600000);
+
+function resetSitemap(){
+  sitemap = null;
+}

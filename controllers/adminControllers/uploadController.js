@@ -29,6 +29,7 @@ async function portfolioPOST(req, res){
       user.findById(`${AID}`)
       .then(result=>{
         if(result != null){
+          let drawingEntry = new drawingModel();
           drawingEntry.title=req.body.title;
           drawingEntry.save()
           .then(drawingEntry=>{
@@ -63,7 +64,7 @@ async function blogPOST(req, res){
       user.findById(`${AID}`)
       .then(result=>{
         if(result != null){
-          //Initialisation
+          let blogEntry = new blogModel();
 
           blogEntry.title=req.body.title;
           blogEntry.snippet=req.body.snippet;
