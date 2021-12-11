@@ -1,44 +1,19 @@
-
-const session = require('express-session');
 //hasher
 
 const hasher = require('crypto-js');
 
 const cookies = require('cookies');
-const cookieKeys = ['Crest MapleDoor AveMaria NemtudomRuumano'];
 
 //Mongoose
 
 const user = require('../../models/user');
 
 function indexGET(req, res){
-    let cookie = new cookies(req, res, {keys:cookieKeys});
-    let AID = cookie.get('AID', {signed:true});
-
-
-    if(!AID)
-    {
-        res.render('adminViews/login')
-    }
-    else{
-        user.findById(`${AID}`)
-        .then(result=>{
-          if(result != null){
-                res.render('adminViews/index');
-                console.log('User entry granted');
-                }
-                else{
-                  res.redirect('/');
-                }
-        })
-        .catch(err =>{
-            console.log(err);
-        })
-    }
+  res.render('adminViews/index');
 }
 async function indexPOST(req, res){
     try{
-      let cookie = new cookies(req, res, {keys:cookieKeys});
+      let cookie = new cookies(req, res, {keys:[`${process.env.COOKIE_KEY}`]});
       let hashedPass = hasher.SHA256(req.body.password, process.env.ENC_KEY);
       console.log(hashedPass +'\n' + req.body.password);
       let admin = await user.findOne({"username":`${req.body.username}`});

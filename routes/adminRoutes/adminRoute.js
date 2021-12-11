@@ -12,15 +12,15 @@ const blogRouter = require('./blogRoute');
 const controller = require('../../controllers/adminControllers/indexController');
 
 //controller middleware
-router.get('/', controller.indexGET);
+router.get('/',require( '../../utility/adminAuth'), controller.indexGET);
 router.post('/', controller.indexPOST);
 
 //Routing
 
-router.use('/orders', ordersRouter);
-router.use('/contacts', contactsRouter);
-router.use('/upload', uploadRouter);
-router.use('/portfolio', portfolioRouter);
-router.use('/blog', blogRouter);
+router.use('/orders',require('../../utility/adminAuth'), ordersRouter);
+router.use('/contacts',require('../../utility/adminAuth'), contactsRouter);
+router.use('/upload',require( '../../utility/adminAuth'), uploadRouter);
+router.use('/portfolio',require( '../../utility/adminAuth'), portfolioRouter);
+router.use('/blog',require( '../../utility/adminAuth'), blogRouter);
 
 module.exports = router;
