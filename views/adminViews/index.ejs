@@ -35,64 +35,15 @@
 	</div>
 
 	<!-- Header section  -->
-	<header class="header-section">
-		<%- include("./partials/navbar.ejs") %>
-	</header>
 
 	<div class="clearfix"></div>
 	<!-- Header section end  -->
 
-		<div id="blogUpload" class="modal fade" role="dialog">
-			<div class="modal-dialog modal-xl">
+	<header class="header-section">
+		<%- include("./partials/navbar.ejs") %>
+	</header>
 
-				<div class="modal-content">
-					<div class="modal-header">
-						<h3>Upload a Blog</h3>
-					</div>
-					<div class="modal-body">
-
-						<div class="form-group">
-							<form class="text-center" action="/admin/upload/blog" method="post" enctype="multipart/form-data" id="blogForm">
-								<label for="title">Title</label>
-								<input type="text" name="title" placeholder="The blog title" class="form-control">
-								<label for="snippet">Snippet</label>
-								<input type="text" name="snippet" placeholder="Basically a short description" class="form-control">
-								<label for="description">Text</label>
-								<textarea name="description" class="form-control" form="blogForm" rows="15"></textarea>
-								<label for="drawing">Blog Image</label>
-								<input type="file" name="drawing" class="form-control mb-4 ">
-								<input type="submit" value="Submit" class="site-btn">
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id="portfolioUpload" class="modal fade" role="dialog">
-			<div class="modal-dialog modal-lg">
-
-				<div class="modal-content">
-					<div class="modal-header">
-						<h3>Upload a Drawing to Portfolio</h3>
-					</div>
-					<div class="modal-body">
-
-						<div class="form-group">
-							<form class="text-center" action="/admin/upload/portfolio" method="post" enctype="multipart/form-data">
-								<label for="title">Title</label>
-								<input type="text" name="title" placeholder="The drawing title" class="form-control">
-								<label for="drawing">Drawing</label>
-								<input type="file" name="drawing" class="form-control mb-4 ">
-								<input type="submit" value="Submit" class="site-btn">
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-
+	<%- include("./partials/modals.ejs") %>
 	<!--====== Javascripts & Jquery ======-->
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

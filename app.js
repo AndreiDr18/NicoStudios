@@ -28,8 +28,7 @@ const mongoose = require('mongoose');
 //--Globoal utilities--
 
 //MongoDB Environment
-const dbURI = 'mongodb://andreidr1:12321@cluster0-shard-00-00.z0sa2.mongodb.net:27017,cluster0-shard-00-01.z0sa2.mongodb.net:27017,cluster0-shard-00-02.z0sa2.mongodb.net:27017/NicoStudios?ssl=true&replicaSet=atlas-z70060-shard-0&authSource=admin&retryWrites=true&w=majority';
-mongoose.connect(dbURI, {
+mongoose.connect(process.env.DB_URI, {
     useNewUrlParser:true,
     useUnifiedTopology:true
 })
