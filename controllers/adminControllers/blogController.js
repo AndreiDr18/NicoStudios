@@ -25,7 +25,7 @@ async function blogDELETE(req, res){
         if(result != null){
           blogModel.findByIdAndDelete(`${req.params.id}`)
           .then(result=>{
-            fs.unlinkSync(path.normalize(__dirname + `/../../public/img/blog/${req.params.id}.jpg`));
+            if(fs.existsSync(__dirname + `/../../public/img/portfolio/${req.params.id}.jpg`)) fs.unlinkSync(path.normalize(__dirname + `/../../public/img/blog/${req.params.id}.jpg`));
           });
           res.redirect('/admin/blog');
               }

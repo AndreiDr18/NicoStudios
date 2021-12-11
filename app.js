@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const app = express();
 
@@ -26,7 +28,7 @@ const mongoose = require('mongoose');
 //--Globoal utilities--
 
 //MongoDB Environment
-const dbURI = 'mongodb://andreidr:12321@cluster0-shard-00-00.z0sa2.mongodb.net:27017,cluster0-shard-00-01.z0sa2.mongodb.net:27017,cluster0-shard-00-02.z0sa2.mongodb.net:27017/NicoStudios?ssl=true&replicaSet=atlas-z70060-shard-0&authSource=admin&retryWrites=true&w=majority';
+const dbURI = 'mongodb://andreidr1:12321@cluster0-shard-00-00.z0sa2.mongodb.net:27017,cluster0-shard-00-01.z0sa2.mongodb.net:27017,cluster0-shard-00-02.z0sa2.mongodb.net:27017/NicoStudios?ssl=true&replicaSet=atlas-z70060-shard-0&authSource=admin&retryWrites=true&w=majority';
 mongoose.connect(dbURI, {
     useNewUrlParser:true,
     useUnifiedTopology:true
@@ -36,9 +38,8 @@ mongoose.connect(dbURI, {
     console.log('Succesfully connected to MongoDB');
 })
 .catch(err =>{
-    console.log(err + ' \n mongodb connect app.js')
-})
-
+    console.log(err + ' \n mongodb connect app.js');
+});
 
 const blogModel = require(path.normalize(__dirname + '/models/blog'));
 //--MongoDB Environment

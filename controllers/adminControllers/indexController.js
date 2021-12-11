@@ -37,17 +37,22 @@ function indexGET(req, res){
     }
 }
 async function indexPOST(req, res){
-    let cookie = new cookies(req, res, {keys:cookieKeys});
-    let hashedPass = hasher.SHA3(req.body.password);
-
-    let admin = await user.findOne({"username":`${req.body.username}`});
-
-    //Login verification
-    if(admin.password == hashedPass){
-      cookie.set('AID', `${admin._id}`, {signed:true});
-      res.redirect('/admin');
-    }
-    else{
+    try{
+      let cookie = new cookies(req, res, {keys:cookieKeys});
+      let hashedPass = hasher.SHA256(req.body.password, process.env.ENC_KEY);
+      console.log(hashedPass +'\n' + req.body.password);
+      let admin = await user.findOne({"username":`${req.body.username}`});
+      console.log(admin);
+      //Login verification
+      if(admin.password == hashedPass){
+        cookie.set('AID', `${admin._id}`, {signed:true});
+        res.redirect('/admin');
+      }
+      else{
+        res.redirect('/admin');
+      }
+    }catch(e){
+      console.log(e);
       res.redirect('/admin');
     }
 
